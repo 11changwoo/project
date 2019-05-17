@@ -1,0 +1,35 @@
+{%  extends 'layouts/app.twig' %}
+
+{% block title %}
+    {% if board %}
+        게시판 수정
+    {% else %}
+        게시판 작성
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <h3>
+        {% if board %}
+            게시판 수정
+        {% else %}
+            게시판 작성
+        {% endif %}
+    </h3>
+
+    <form id="form" name="form" action="/board/update" method="POST">
+        <input type="hidden" id="no" name="no" value="{{ board[0].getNo() }}">
+        <input type="text" id="subject" name="subject" placeholder="제목" value="{{ board[0].getSubject() }}"> <br/>
+
+        <textarea col="5" row="10" id="content" name="content" >{{ board[0].getContent() }}</textarea> <br/>
+
+        <button type="submit">
+            {% if board %}
+                수정
+            {% else %}
+                작성
+            {% endif %}
+        </button>
+    </form>
+
+{% endblock %}

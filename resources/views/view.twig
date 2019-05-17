@@ -1,0 +1,28 @@
+{%  extends 'layouts/app.twig' %}
+
+{% block title %}
+    게시판
+{% endblock %}
+
+{% block content %}
+    <h3>게시판 상세</h3>
+
+    <label>제목 : </label><span>{{ board[0].getSubject() }}</span> <br/>
+    <label>내용 :</label>
+    <p>{{ board[0].getContent() }}</p>
+    
+    {% if session == board[0].getUser_id() %}
+        <a href="/board/modify?no={{ board[0].getNo() }}"><button>수정</button></a> &nbsp;&nbsp;
+        {# <a href="/board/delete?no={{ board[0].getNo() }}"><button>삭제</button></a> #}
+        <button onclick="del({{ board[0].getNo() }})">삭제</button>
+    {% endif %}
+
+    <script type="text/javascript">
+        function del(no) {
+            if(confirm('삭제합니까?')){
+                location.href='/board/delete?no='+no;
+            }
+        }
+    </script>
+{% endblock %}
+

@@ -1,0 +1,31 @@
+{%  extends 'layouts/app.twig' %}
+
+{% block title %}
+    게시판
+{% endblock %}
+
+{% block content %}
+    <h3>게시판 목록</h3>
+
+    <table>
+        <thead>
+            <th>순번</th>
+            <th>제목</th>
+            <th>작성자</th>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.no }}</td>
+                    <td><a href="/board/view?no={{ user.no }}">{{ user.getSubject() }}</a></td>
+                    <td>{{ user.getUser_id() }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+    <p>
+        <a href="/board/write"><button>글쓰기</button></a>
+    </p>
+{% endblock %}

@@ -1,0 +1,15 @@
+{%  extends 'layouts/app.twig' %}
+
+{% block title %}
+    로그인
+{% endblock %}
+
+{% block content %}
+    <h3>로그인</h3>
+    <form name="form" action="/login/connect" method="POST">
+        <input type="text" id="user_id" name="user_id" placeholder="아이디"> <br/><br/>
+        <input type="password" id="password" name="password" placeholder="비밀번호"> <br/><br/>
+
+        <button type="submit">로그인</button>
+    </form>
+{% endblock %}
