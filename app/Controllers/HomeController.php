@@ -4,12 +4,11 @@ namespace App\Controllers;
 
 use PDO;
 use PDOException;
-use App\Models\Board;
+use App\Models\BoardModel;
 
 class HomeController extends Controller {    
 
     public function index($request, $response, $args) {
-        // return $this->c->view->render($response, 'home.twig');
         return $this->c->view->render($response, 'home.twig');
     }
 
@@ -27,12 +26,9 @@ class HomeController extends Controller {
 
     public function board($request, $response, $args) {
 
-        $users = $this->c->db->query("select * from board")->fetchAll(PDO::FETCH_CLASS, Board::class);
+        $users = $this->c->db->query("select * from board")->fetchAll(PDO::FETCH_CLASS, BoardModel::class);
 
         return $this->c->view->render($response, 'board.twig', compact('users'));
     }
 
-    // public function write($request, $response, $args) {        
-    //     return $this->c->view->render($response, 'write.twig');
-    // }
 }

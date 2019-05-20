@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class Board {
+class BoardModel {
 
     public function getNo() {
         return $this->no;
