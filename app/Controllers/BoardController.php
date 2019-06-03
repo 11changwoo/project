@@ -24,7 +24,7 @@ class BoardController extends Controller {
         $user_id = $this->c->session->get('id');
         $params = $request->getParams();
 
-        $statement;
+        $statement = '';
 
         if($params['no'] === '') {
             $statement = $this->c->db->prepare("insert into board(user_id, subject, content) values(:user_id, :subject, :content)");    
